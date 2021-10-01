@@ -1,0 +1,11 @@
+plugins {
+    id 'kotlin'
+}
+
+dependencies {
+    implementation project(":domain")
+    implementation koin.core
+    implementation ktor
+    implementation serialization
+
+}
