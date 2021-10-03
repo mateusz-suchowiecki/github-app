@@ -5,6 +5,8 @@ import io.ktor.client.engine.android.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.logging.*
+import io.ktor.client.features.observer.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
@@ -28,5 +30,25 @@ internal val httpClient = HttpClient(Android) {
             connectTimeout = TIME_OUT
             socketTimeout = TIME_OUT
         }
+    }
+
+    install(Logging) {
+        logger = object : Logger {
+            override fun log(message: String) {
+                println("Logger Ktor => $message")
+            }
+
+        }
+        level = LogLevel.ALL
+    }
+
+    install(ResponseObserver) {
+        onResponse { response ->
+            println("HTTP status: ${response.status.value}")
+        }
+    }
+
+    install(DefaultRequest) {
+        header(HttpHeaders.ContentType, ContentType.Application.Json)
     }
 }

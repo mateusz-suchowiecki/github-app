@@ -8,5 +8,5 @@ internal class UserApi(
         private val client: HttpClient
 ) {
 
-    suspend fun searchUser(phrase: String): List<User> = client.get("search/users?q=$phrase")
+    suspend fun searchUser(phrase: String): UsersResponse = client.get("search/users?q=$phrase")
 }

@@ -1,11 +1,10 @@
 plugins {
     id 'kotlin'
+    id 'kotlinx-serialization'
 }
 
 dependencies {
     implementation project(":domain")
     implementation koin.core
     implementation ktor
-    implementation serialization
-
 }

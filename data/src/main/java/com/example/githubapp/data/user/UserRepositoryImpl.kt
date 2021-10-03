@@ -7,6 +7,6 @@ internal class UserRepositoryImpl(
         private val userApi: UserApi
 ) : UserRepository {
     override suspend fun searchUser(phrase: String): List<User> {
-        return userApi.searchUser(phrase)
+        return userApi.searchUser(phrase).items
     }
 }

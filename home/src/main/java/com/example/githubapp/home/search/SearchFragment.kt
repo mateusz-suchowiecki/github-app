@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.githubapp.home.databinding.SearchFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,7 +21,10 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.findUser("mat")
+        binding.searchField.addTextChangedListener { viewModel.searchTextChanged(it.toString()) }
+        viewModel.userData.observe(viewLifecycleOwner) {
+            println("users: ${it.size}")
+        }
     }
 
 }
