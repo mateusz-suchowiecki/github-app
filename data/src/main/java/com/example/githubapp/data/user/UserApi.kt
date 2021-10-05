@@ -1,6 +1,5 @@
 package com.example.githubapp.data.user
 
-import com.example.githubapp.domain.user.User
 import io.ktor.client.*
 import io.ktor.client.request.*
 

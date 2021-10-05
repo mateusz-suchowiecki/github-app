@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.githubapp.home.databinding.SearchFragmentBinding
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
+    private val adapter: SearchAdapter by inject()
     private val viewModel: SearchViewModel by viewModel()
     private lateinit var binding: SearchFragmentBinding
 
@@ -21,9 +23,19 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.searchField.addTextChangedListener { viewModel.searchTextChanged(it.toString()) }
-        viewModel.userData.observe(viewLifecycleOwner) {
-            println("users: ${it.size}")
+        setupView()
+        setupViewModel()
+    }
+
+    private fun setupView() = binding.run {
+        searchField.addTextChangedListener { viewModel.searchTextChanged(it.toString()) }
+        recyclerView.adapter = adapter
+    }
+
+    private fun setupViewModel() = viewModel.run {
+        userData.observe(viewLifecycleOwner) {
+            adapter.users = it
+            adapter.notifyDataSetChanged()
         }
     }
 

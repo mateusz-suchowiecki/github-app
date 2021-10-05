@@ -4,6 +4,7 @@
 
     <application>
         <activity
+            android:theme="@style/Theme.GithubApp.NoActionBar"
             android:name="com.example.githubapp.home.HomeActivity"
             android:exported="true">
             <intent-filter>
