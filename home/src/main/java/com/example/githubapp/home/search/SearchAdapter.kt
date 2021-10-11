@@ -3,16 +3,19 @@ package com.example.githubapp.home.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.githubapp.domain.user.User
 import com.example.githubapp.home.databinding.SearchItemBinding
 
 internal class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     var users: List<User> = emptyList()
+    var userTapListener: OnUserTap? = null
 
     internal class ViewHolder(private val binding: SearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(user: User) = binding.run {
-            fullName.text = user.id.toString()
+            avatarView.load(user.avatar)
+            login.text = user.login
         }
     }
 
@@ -21,8 +24,14 @@ internal class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() 
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(users[position])
+        val user = users[position]
+        holder.bind(user)
+        holder.itemView.setOnClickListener { userTapListener?.onUserTap(user) }
     }
 
     override fun getItemCount() = users.size
+
+    interface OnUserTap {
+        fun onUserTap(user: User)
+    }
 }

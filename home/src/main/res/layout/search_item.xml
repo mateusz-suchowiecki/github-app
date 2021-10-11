@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/avatar_view"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -21,11 +21,12 @@
         style="@style/TextAppearance.AppCompat.SearchResult.Title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/full_name"
+        android:id="@+id/login"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/avatar_view"
         app:layout_constraintTop_toTopOf="@id/avatar_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="@tools:sample/full_names" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

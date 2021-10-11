@@ -40,6 +40,7 @@ android {
 dependencies {
     implementation project(":core")
     implementation project(":domain")
+    implementation project(":user")
 
     implementation kotlinCore
     implementation kotlinAndroid
@@ -47,8 +48,8 @@ dependencies {
     implementation koin.android
     implementation support
     implementation navigation
+    implementation coil
 
-//    implementation 'com.google.android.material:material:1.4.0'
     testImplementation unitTest
     androidTestImplementation instrumentedTest
 }

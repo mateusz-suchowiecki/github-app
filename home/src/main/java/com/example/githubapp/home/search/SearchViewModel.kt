@@ -1,10 +1,12 @@
 package com.example.githubapp.home.search
 
 import android.util.Log
+import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavDeepLinkRequest
 import com.example.githubapp.domain.user.User
 import com.example.githubapp.domain.user.UserUseCase
 import kotlinx.coroutines.Job
