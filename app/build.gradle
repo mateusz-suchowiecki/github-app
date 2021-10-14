@@ -38,5 +38,4 @@ dependencies {
     implementation koin.android
     implementation project(":core")
     implementation project(':home')
-    implementation project(':user')
 }

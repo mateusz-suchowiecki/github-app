@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -38,11 +39,5 @@ dependencies {
     implementation project(":core")
     implementation project(":domain")
 
-    implementation kotlinCore
-    implementation kotlinAndroid
-    implementation koin.core
-    implementation koin.android
-    implementation support
-    implementation navigation
-    implementation coil
+    implementation androidUi
 }

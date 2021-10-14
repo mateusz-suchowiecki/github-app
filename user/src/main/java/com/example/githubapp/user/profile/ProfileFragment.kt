@@ -1,4 +1,4 @@
-package com.example.github.user
+package com.example.githubapp.user.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.github.user.databinding.ProfileFragmentBinding
+import com.example.githubapp.user.databinding.ProfileFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment() {
     private val viewModel: ProfileViewModel by viewModel()
+    private val args : ProfileFragmentArgs by navArgs()
     private lateinit var binding: ProfileFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -27,10 +28,12 @@ class ProfileFragment : Fragment() {
     private fun setupViewModel() = binding.run {
         viewModel.userData.observe(viewLifecycleOwner) {
             avatarView.load(it.avatar) {
-                CircleCropTransformation()
+                crossfade(true)
+                transformations(CircleCropTransformation())
             }
+            nameView.text = it.name
         }
 
-//        viewModel.initialize()
+        viewModel.initialize(args.user)
     }
 }

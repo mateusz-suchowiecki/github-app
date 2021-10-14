@@ -7,4 +7,8 @@ internal class UserUseCaseImpl(
     override suspend fun searchUser(phrase: String): List<User> {
         return userRepository.searchUser(phrase)
     }
+
+    override suspend fun getUserDetails(login: String): UserDetails {
+        return userRepository.getUserDetails(login)
+    }
 }

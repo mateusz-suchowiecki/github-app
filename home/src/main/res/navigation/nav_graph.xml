@@ -9,6 +9,5 @@
         android:name="com.example.githubapp.home.search.SearchFragment"
         android:label="SearchFragment" >
     </fragment>
-<!--    <include app:graph="@navigation/profile_nav_graph" />-->
 
 </navigation>

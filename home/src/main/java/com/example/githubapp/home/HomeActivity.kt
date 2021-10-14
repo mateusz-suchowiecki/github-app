@@ -2,12 +2,17 @@ package com.example.githubapp.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
-class HomeActivity : AppCompatActivity() {
-
+class HomeActivity : AppCompatActivity(R.layout.home_activity) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_activity)
+        loadKoinModules(homeModule)
     }
 
+    override fun onDestroy() {
+        unloadKoinModules(homeModule)
+        super.onDestroy()
+    }
 }

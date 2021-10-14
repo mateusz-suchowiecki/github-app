@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.fragment.findNavController
-import com.example.githubapp.domain.user.User
 import com.example.githubapp.home.databinding.SearchFragmentBinding
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchFragment : Fragment(), SearchAdapter.OnUserTap  {
+class SearchFragment : Fragment() {
 
     private val adapter: SearchAdapter by inject()
     private val viewModel: SearchViewModel by viewModel()
@@ -45,14 +41,7 @@ class SearchFragment : Fragment(), SearchAdapter.OnUserTap  {
     }
 
     private fun setupActions() {
-        adapter.userTapListener = this
+        adapter.userTapListener = viewModel
     }
 
-
-    override fun onUserTap(user: User) {
-        val request = NavDeepLinkRequest.Builder
-                .fromUri("android-app://com.example.github/profile_fragment".toUri())
-                .build()
-        findNavController().navigate(request)
-    }
 }

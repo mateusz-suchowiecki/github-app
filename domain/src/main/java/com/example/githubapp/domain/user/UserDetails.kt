@@ -15,11 +15,11 @@ class UserDetails(
         val name: String?,
         @SerialName("company")
         val company: String?,
-        val blog: String?,
-        val location: String?,
-        val email: String?,
-        val bio: String?,
-        val publicRepoCount: Int,
-        val followerCount: Int,
-        val followingCount: Int,
+//        val blog: String?,
+//        val location: String?,
+//        val email: String?,
+//        val bio: String?,
+//        val publicRepoCount: Int,
+//        val followerCount: Int,
+//        val followingCount: Int,
 )

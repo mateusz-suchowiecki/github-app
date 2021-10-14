@@ -55,4 +55,14 @@ ext {
     coil = [
             "io.coil-kt:coil:$coil_version"
     ]
+
+    androidUi = [
+            kotlinCore,
+            kotlinAndroid,
+            koin.core,
+            koin.android,
+            support,
+            navigation,
+            coil,
+    ]
 }
